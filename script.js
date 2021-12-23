@@ -32,9 +32,11 @@ function row(user) {
 
 // start time in HH: MM format
     const startTimeTd = document.createElement("td");
-    let newDate = moment.unix(user.date).format("HH/mm");        
+    let newDate = moment.unix(user.date).format("DD HH/mm"); 
     startTimeTd.append(newDate);
     tr.append(startTimeTd);
+           
+    
 
 //duration in minutes
     const durationTd = document.createElement("td");
@@ -43,9 +45,10 @@ function row(user) {
     tr.append(durationTd);
 
  // name of the amenity object
-    const amenityIdTd = document.createElement("td");    
-    amenityIdTd.append(user.amenity_id);
-    tr.append(amenityIdTd);
+    const amenityIdTd = document.createElement("td");
+    amenityIdTd.append(user.amenity_id.name)
+    tr.append(amenityIdTd)
+    
     
     const linksTd = document.createElement("td");
 

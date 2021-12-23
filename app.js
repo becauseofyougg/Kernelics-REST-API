@@ -4,6 +4,8 @@ const csvFilePathReservations = './db/Reservations.csv'
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const itemsJson = require('./amenity.json')
+const finalProduct = require('./users.json')
 
 csv({
   delimiter: ";"
@@ -25,10 +27,22 @@ csv({
             })
         })
 
+
+let mergedItems = [...finalProduct].map(obj => {
+          let items = [...itemsJson].find(item => item.id === obj.amenity_id)
+          obj.amenity_id = items
+          return {...obj, ...items}
+  })
+
+
+fs.writeFileSync("merged.json", JSON.stringify(mergedItems), "utf-8", (err) => {
+          if (err) console.log(err)
+      })  
+
 //----------------
 app.use(express.static(__dirname ));
 
-const filePath = "users.json";
+const filePath = "merged.json";
 
 app.get("/api/users", function (req, res) {
   let content = fs.readFileSync(filePath, "utf8");
