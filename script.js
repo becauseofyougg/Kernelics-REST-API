@@ -46,7 +46,7 @@ function row(user) {
 
  // name of the amenity object
     const amenityIdTd = document.createElement("td");
-    amenityIdTd.append(user.amenity_id.name)
+    amenityIdTd.append(user.amenity_id)
     tr.append(amenityIdTd)
     
     
