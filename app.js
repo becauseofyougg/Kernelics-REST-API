@@ -34,7 +34,9 @@ let mergedItems = [...usersJson].map(obj => {
           return { ...items, ...obj}
           
   })
-
+mergedItems.sort(function(a, b) {
+  return a.date.localeCompare(b.date)
+})
 
 fs.writeFileSync("merged.json", JSON.stringify(mergedItems), "utf-8", (err) => {
           if (err) console.log(err)
