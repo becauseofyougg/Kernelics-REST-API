@@ -1,4 +1,4 @@
-# Kernelics-REST-API
+# REST-API
 
 to start use *npm run devStart*
 
